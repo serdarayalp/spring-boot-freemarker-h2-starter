@@ -1,13 +1,17 @@
+<#import "/spring.ftl" as spring />
+
 <!DOCTYPE html>
 
 <html lang="de">
 <head>
     <title>Homepage</title>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
+
+<h1><@spring.message "welcome"/></h1>
 
 <a href="cities">Städte anzeigen</a>
 
@@ -24,10 +28,10 @@ Dies prüft, ob das Objekt oder das Attribut nicht null ist (Klammern verwenden)
 -->
 
 <#if firstName??>
-    <#-- Gastmann hier ist der Default-Wert -->
+<#-- Gastmann hier ist der Default-Wert -->
     Hallo ${firstName} ${lastName!"Gastmann"}, Wie geht's?
     <br>
-    UserId: ${userId?string["######"]}
+    UserId: ${userId!""}
 </#if>
 
 <#--

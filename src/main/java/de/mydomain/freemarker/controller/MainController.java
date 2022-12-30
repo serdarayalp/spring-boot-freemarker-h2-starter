@@ -4,6 +4,8 @@ import de.mydomain.freemarker.model.Car;
 import de.mydomain.freemarker.model.City;
 import de.mydomain.freemarker.service.ICityService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -46,5 +48,29 @@ public class MainController {
         params.put("cars", cars);
 
         return new ModelAndView("showCities", params);
+    }
+
+    @GetMapping("/param1")
+    public ModelAndView param1() {
+        ModelAndView mav = new ModelAndView();
+
+        mav.addObject("message", "Das ist ein Test...");
+        mav.setViewName("main");
+
+        return mav;
+    }
+
+    @GetMapping("/param2")
+    public String param2(Model model) {
+        model.addAttribute("message", "Das ist ein Test...");
+        return "main";
+    }
+
+
+    @GetMapping("/param3")
+    public String param3(ModelMap modelMap) {
+        modelMap.addAttribute("message", "Das ist ein Test...");
+
+        return "main";
     }
 }
